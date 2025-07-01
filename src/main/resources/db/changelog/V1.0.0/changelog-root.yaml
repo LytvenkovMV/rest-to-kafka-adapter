@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: 01.create-table-api-data.yaml
+      relativeToChangelogFile: true

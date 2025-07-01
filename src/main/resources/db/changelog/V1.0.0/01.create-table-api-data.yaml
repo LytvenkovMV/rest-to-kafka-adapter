@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01.create-table-api-data
+      author: venkovmv
+      changes:
+        - createTable:
+            tableName: api_data
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                  remarks: "Unique record identifier"
+              - column:
+                  name: created_at
+                  type: timestamp
+                  remarks: "Record creation date and time"
+              - column:
+                  name: success
+                  type: boolean
+                  remarks: "Response status"
+              - column:
+                  name: payload
+                  type: jsonb
+                  remarks: "Response data or error message"

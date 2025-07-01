@@ -1,3 +1,39 @@
 spring:
   application:
     name: rest-to-kafka-adapter
+
+  datasource:
+    url: jdbc:postgresql://localhost:5437/rtk-adapter-db
+    username: admin
+    password: qwerty
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.yaml
+
+  cloud:
+    openfeign:
+      client:
+        config:
+          feign-client-one:
+            connect-timeout: 5000
+            read-timeout: 2000
+
+  kafka:
+    bootstrap-servers: localhost:29092
+    producer:
+      acks: all
+      retries: 3
+
+rest-to-kafka-adapter:
+  kafka:
+    data-topic: API.DATA.OUT.V1
+    error-topic: API.ERRORS.OUT.V1
+
+  scheduled-rest-client:
+    url: "https://api.open-meteo.com/v1/forecast?latitude=55.7558&longitude=37.6176&current_weather=true"
+    cron: "0 0 * * * *"
