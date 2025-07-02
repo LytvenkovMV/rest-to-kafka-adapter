@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.lytvenkovmv.resttokafkaadapter.dto.ErrorDto;
 
-import java.util.UUID;
-
 @Slf4j
 @RestControllerAdvice
 public class ControllerAdvice {
@@ -18,7 +16,6 @@ public class ControllerAdvice {
         log.warn("Ошибка во время HTTP запроса", ex);
 
         return ErrorDto.builder()
-                .id(UUID.randomUUID())
                 .errorType(ex.getClass().getTypeName())
                 .errorMessage(ex.getMessage())
                 .build();
