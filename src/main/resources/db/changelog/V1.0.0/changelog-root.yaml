@@ -2,3 +2,24 @@ databaseChangeLog:
   - include:
       file: 01.create-table-api-data.yaml
       relativeToChangelogFile: true
+  - include:
+      file: 02.create-table-users.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 03.create-table-roles.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 04.create-table-users-roles.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 05.insert-into-users-initial-data.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 06.insert-into-roles-initial-data.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 07.insert-into-users-roles-initial-data.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 08.create-api-data-created-at-idx.yaml
+      relativeToChangelogFile: true

@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 05.insert-into-users-initial-data
+      author: venkovmv
+      changes:
+        - sqlFile:
+            path: sql/insert-into-users-initial-data.sql
+            relativeToChangelogFile: true

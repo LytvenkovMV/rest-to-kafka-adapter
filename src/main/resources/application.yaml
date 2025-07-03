@@ -29,6 +29,12 @@ spring:
       acks: all
       retries: 3
 
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
 rest-to-kafka-adapter:
   kafka:
     data-topic: API.DATA.OUT.V1

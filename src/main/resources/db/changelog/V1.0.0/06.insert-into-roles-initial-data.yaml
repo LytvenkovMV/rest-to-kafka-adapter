@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 06.insert-into-roles-initial-data
+      author: venkovmv
+      changes:
+        - sqlFile:
+            path: sql/insert-into-roles-initial-data.sql
+            relativeToChangelogFile: true

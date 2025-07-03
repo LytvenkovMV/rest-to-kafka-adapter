@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01.create-table-api-data
+      author: venkovmv
+      changes:
+        - createIndex:
+            tableName: api_data
+            indexName: api_data_created_at_idx
+            columns:
+              - column:
+                  name: created_at
