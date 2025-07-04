@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 01.create-table-api-data
+      id: 08.create-api-data-created-at-idx
       author: venkovmv
       changes:
         - createIndex:
