@@ -7,8 +7,8 @@ import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
-import ru.lytvenkovmv.resttokafkaadapter.feign.FeignClientOne;
 import ru.lytvenkovmv.resttokafkaadapter.dto.restclient.RestClientResponseDto;
+import ru.lytvenkovmv.resttokafkaadapter.feign.FeignClientOne;
 import ru.lytvenkovmv.resttokafkaadapter.service.restclient.RetryingRestClient;
 
 @Service

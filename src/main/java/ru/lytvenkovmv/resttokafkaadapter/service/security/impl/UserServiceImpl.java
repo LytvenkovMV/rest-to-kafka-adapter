@@ -20,7 +20,6 @@ import ru.lytvenkovmv.resttokafkaadapter.repository.UserRepository;
 import ru.lytvenkovmv.resttokafkaadapter.service.security.UserService;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 @Service
