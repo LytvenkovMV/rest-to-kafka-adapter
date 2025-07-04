@@ -3,6 +3,7 @@ package ru.lytvenkovmv.resttokafkaadapter.controller.security;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +24,7 @@ public class RolesController {
     @ApiResponse(responseCode = "200",
             description = "Список ролей пользователя успешно обновлен")
     @PutMapping()
-    public void updateRoles(@RequestBody UpdateRolesRequestDto dto) {
+    public void updateRoles(@RequestBody @Valid UpdateRolesRequestDto dto) {
         service.updateRoles(dto);
     }
 }

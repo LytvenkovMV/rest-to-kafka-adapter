@@ -3,6 +3,7 @@ package ru.lytvenkovmv.resttokafkaadapter.controller.security;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +28,7 @@ public class AuthController {
     @ApiResponse(responseCode = "200",
             description = "Пользователь успешно зарегистрирован в системе")
     @PostMapping("/register")
-    public void register(@RequestBody RegisterRequestDto registerRequest) {
+    public void register(@RequestBody @Valid RegisterRequestDto registerRequest) {
         userService.create(registerRequest);
     }
 
@@ -36,7 +37,7 @@ public class AuthController {
     @ApiResponse(responseCode = "200",
             description = "Пользователь успешно аутентифицирован в системе")
     @PostMapping("/login")
-    public JwtResponseDto createToken(@RequestBody AuthRequestDto authRequest) {
+    public JwtResponseDto createToken(@RequestBody @Valid AuthRequestDto authRequest) {
         return authService.authenticateUser(authRequest);
     }
 }

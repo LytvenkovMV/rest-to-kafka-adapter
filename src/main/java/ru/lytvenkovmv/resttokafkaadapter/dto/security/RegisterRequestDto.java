@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import org.springframework.validation.annotation.Validated;
 
-@Validated
 public record RegisterRequestDto(
         @Schema(description = "Имя пользователя",
                 example = "user1",
@@ -24,7 +23,7 @@ public record RegisterRequestDto(
                 example = "user1@mail.ru",
                 requiredMode = Schema.RequiredMode.REQUIRED)
         @NotBlank(message = "Адрес электронной почты не может быть пустым")
-        @Pattern(regexp = "^[a-zA-Z0-9._%+-]@[a-zA-Z0-9.-]\\.[a-zA-Z]{2,}$",
+        @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
                 message = "Неверный формат адреса электронной почты")
         String email
 ) {

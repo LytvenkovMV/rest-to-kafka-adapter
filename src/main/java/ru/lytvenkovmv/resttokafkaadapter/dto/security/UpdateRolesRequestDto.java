@@ -7,7 +7,6 @@ import org.springframework.validation.annotation.Validated;
 
 import java.util.Set;
 
-@Validated
 public record UpdateRolesRequestDto(
         @Schema(description = "Имя пользователя",
                 example = "user1",

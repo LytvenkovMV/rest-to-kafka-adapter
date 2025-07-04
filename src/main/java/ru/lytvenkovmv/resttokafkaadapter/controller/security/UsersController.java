@@ -3,6 +3,7 @@ package ru.lytvenkovmv.resttokafkaadapter.controller.security;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -24,7 +25,7 @@ public class UsersController {
     @ApiResponse(responseCode = "200",
             description = "Пароль успешно обновлен")
     @PutMapping()
-    public void updatePassword(@RequestBody UpdatePasswordRequestDto updatePasswordRequestDto) {
+    public void updatePassword(@RequestBody @Valid UpdatePasswordRequestDto updatePasswordRequestDto) {
         userService.updatePassword(updatePasswordRequestDto);
     }
 
