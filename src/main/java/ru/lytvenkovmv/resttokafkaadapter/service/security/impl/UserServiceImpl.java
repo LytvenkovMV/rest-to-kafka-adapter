@@ -34,6 +34,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void create(RegisterRequestDto registerRequestDto) {
+        boolean isUsernameExists = userRepository.existsByUsername(registerRequestDto.username());
+        if (isUsernameExists) {
+            throw new RuntimeException("В системе уже зарегистрирован пользователь с именем " + registerRequestDto.username());
+        }
+
+        boolean isEmailExists = userRepository.existsByEmail(registerRequestDto.email());
+        if (isEmailExists) {
+            throw new RuntimeException("В системе уже зарегистрирован пользователь с email " + registerRequestDto.email());
+        }
+
         Role defaulRole = roleRepository.findByRoleName(AppConstants.DEFAULT_ROLE)
                 .orElseThrow(() -> new RuntimeException("В системе нет роли по имени " + AppConstants.DEFAULT_ROLE));
 
@@ -44,8 +54,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete() {
-        String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
-        userRepository.deleteByUsername(username);
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userRepository.findByUsername(userDetails.getUsername())
+                .orElseThrow(() -> new RuntimeException("Не удалось найти пользователя по имени " + userDetails.getUsername()));
+        userRepository.delete(user);
     }
 
     @Override
