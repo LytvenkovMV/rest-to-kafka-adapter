@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
 
         Set<Role> roleSet = new HashSet<>();
         for (String roleName : dto.roles()) {
-            Role role = roleRepository.findByRoleName(roleName.toUpperCase())
+            Role role = roleRepository.findByRoleName("ROLE_" + roleName.toUpperCase())
                     .orElseThrow(() -> new RuntimeException("В системе не существует роль по имени " + roleName));
             roleSet.add(role);
         }
