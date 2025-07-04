@@ -1,15 +1,19 @@
 package ru.lytvenkovmv.resttokafkaadapter.service.restclient.impl;
 
 import feign.FeignException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.TestPropertySource;
+import ru.lytvenkovmv.resttokafkaadapter.dto.restclient.RestClientResponseDto;
 import ru.lytvenkovmv.resttokafkaadapter.feign.FeignClientOne;
 import ru.lytvenkovmv.resttokafkaadapter.service.restclient.RetryingRestClient;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -34,11 +38,11 @@ class RetryingRestClientImplIntegrationTest {
         when(ex.getMessage()).thenReturn("Удаленный сервис не ответил");
         when(feignClientOne.getData()).thenThrow(ex);
 
-//        RestClientResponseDto dto = client.getData();
+        RestClientResponseDto dto = client.getData();
 
-//        Assertions.assertEquals(500, dto.responseStatus());
-//        Assertions.assertNull(dto.responseJson());
-//        Assertions.assertEquals("Удаленный сервис не ответил", dto.errorMessage());
-//        verify(feignClientOne, times(2)).getData();
+        Assertions.assertEquals(500, dto.responseStatus());
+        Assertions.assertNull(dto.responseJson());
+        Assertions.assertEquals("Удаленный сервис не ответил", dto.errorMessage());
+        verify(feignClientOne, times(2)).getData();
     }
 }
