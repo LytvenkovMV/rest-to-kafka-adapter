@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
         "rest-to-kafka-adapter.retry.multiplier=1",
         "rest-to-kafka-adapter.retry.max-delay=1000"
 })
-class RetryingRestClientImplIntegrationTest {
+class RetryingRestClientImplTest {
 
     @Autowired
     private RetryingRestClient client;

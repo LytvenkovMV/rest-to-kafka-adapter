@@ -19,11 +19,11 @@ public class RetryingRestClientImpl implements RetryingRestClient {
     @Override
     @Retryable(
             retryFor = {FeignException.class},
-            maxAttemptsExpression = "${retryProperties.maxAttempts}",
+            maxAttemptsExpression = "#{@retryProperties.maxAttempts}",
             backoff = @Backoff(
-                    delayExpression = "${retryProperties.delay}",
-                    multiplierExpression = "${retryProperties.multiplier}",
-                    maxDelayExpression = "${retryProperties.maxDelay}"
+                    delayExpression = "#{@retryProperties.delay}",
+                    multiplierExpression = "#{@retryProperties.multiplier}",
+                    maxDelayExpression = "#{@retryProperties.maxDelay}"
             ),
             recover = "getDataRecover")
     public RestClientResponseDto getData() {
@@ -36,7 +36,7 @@ public class RetryingRestClientImpl implements RetryingRestClient {
     }
 
     @Recover
-    public RestClientResponseDto getDataFallback(FeignException ex) {
+    public RestClientResponseDto getDataRecover(FeignException ex) {
         return RestClientResponseDto.builder()
                 .responseStatus(ex.status())
                 .errorMessage(ex.getMessage())
