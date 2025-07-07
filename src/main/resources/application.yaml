@@ -35,5 +35,5 @@ rest-to-kafka-adapter:
     error-topic: API.ERRORS.OUT.V1
 
   scheduled-rest-client:
-    url: "https://api.open-meteo.com/v/forecast?latitude=55.7558&longitude=37.6176&current_weather=true"
+    url: "https://api.open-meteo.com/v1/forecast?latitude=55.7558&longitude=37.6176&current_weather=true"
     cron: "0 0/10 * * * *"

@@ -22,5 +22,5 @@ databaseChangeLog:
                   remarks: "Response status"
               - column:
                   name: payload
-                  type: jsonb
+                  type: varchar
                   remarks: "Response data or error message"
